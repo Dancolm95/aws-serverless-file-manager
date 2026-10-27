@@ -13,10 +13,13 @@ export class AwsServerlessFileManagerStack extends cdk.Stack {
     // const queue = new sqs.Queue(this, 'AwsServerlessFileManagerQueue', {
     //   visibilityTimeout: cdk.Duration.seconds(300)
     // });
-    new s3.Bucket(this, 'FileManagerBucket', {
+    const fileManagerBucket = new s3.Bucket(this, 'FileManagerBucket', {
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
       encryption: s3.BucketEncryption.S3_MANAGED,
       enforceSSL: true,
+      removalPolicy: cdk.RemovalPolicy.RETAIN,
     });
+
+    fileManagerBucket.policy?.applyRemovalPolicy(cdk.RemovalPolicy.RETAIN);
   }
 }

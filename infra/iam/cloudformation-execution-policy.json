@@ -2,20 +2,32 @@
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Sid":"AllowBucketCreation",
-      "Effect":"Allow",
-      "Action":"s3:CreateBucket",
-      "Resource": "*"
-    },
-    {
-      "Sid": "AllowBucketSecurityConfiguration",
+      "Sid": "ManageFileManagerBucket",
       "Effect": "Allow",
       "Action": [
-        "s3:PutBucketPublicAccessBlock",
+        "s3:CreateBucket",
+        "s3:GetBucketLocation",
+        "s3:GetBucketAcl",
+        "s3:GetBucketVersioning",
+        "s3:GetBucketTagging",
+        "s3:GetBucketOwnershipControls",
+        "s3:ListBucket",
+        "s3:GetEncryptionConfiguration",
         "s3:PutEncryptionConfiguration",
+        "s3:GetBucketPublicAccessBlock",
+        "s3:PutBucketPublicAccessBlock",
+        "s3:GetBucketPolicy",
         "s3:PutBucketPolicy"
       ],
-      "Resource":"*"
+      "Resource": "arn:aws:s3:::awsserverlessfilemanagers-filemanagerbucket261a0de-*"
+    },
+    {
+      "Sid": "ReadCdkBootstrapAssets",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Resource": "arn:aws:s3:::cdk-hnb659fds-assets-151298016029-us-east-1/*"
     }
   ]
 }
