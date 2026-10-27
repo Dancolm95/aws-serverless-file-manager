@@ -6,6 +6,16 @@
       "Effect":"Allow",
       "Action":"s3:CreateBucket",
       "Resource": "*"
+    },
+    {
+      "Sid": "AllowBucketSecurityConfiguration",
+      "Effect": "Allow",
+      "Action": [
+        "s3:PutBucketPublicAccessBlock",
+        "s3:PutEncryptionConfiguration",
+        "s3:PutBucketPolicy"
+      ],
+      "Resource":"*"
     }
   ]
 }
